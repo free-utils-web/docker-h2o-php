@@ -1,0 +1,8 @@
+[submodule "refs/docker-image-h2o-php"]
+	path = refs/docker-image-h2o-php
+	url = https://github.com/fukata/docker-image-h2o-php.git
+	branch = master
+[submodule "refs/h2o.docker"]
+	path = refs/h2o.docker
+	url = https://github.com/lkwg82/h2o.docker.git
+	branch = master
