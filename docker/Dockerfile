@@ -72,6 +72,7 @@ RUN addgroup h2o \
 WORKDIR /home/h2o
 USER h2o
 COPY ../h2o/h2o.conf /home/h2o/
+COPY ../refs/docker-image-h2o-php/examples/www /var/
 COPY --from=builder /usr/local/bin/h2o /usr/local/bin
 COPY --from=builder /usr/local/share/h2o /usr/local/share/h2o
 EXPOSE 8012 8014
