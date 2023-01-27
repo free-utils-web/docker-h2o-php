@@ -7,7 +7,7 @@ RUN apk update \
     && apk add -U git \
     && git clone --recursive $URL h2o -b $H2O_VERSION
 
-FROM alpine:3.14 as builder
+FROM alpine:edge as builder
 RUN apk update \
     && apk upgrade --available \
     && sync
@@ -23,10 +23,11 @@ RUN apk add -U build-base \
     wslay-dev \
     libuv-dev \
     ruby-rake \
-    #brotli-dev \
+    brotli-dev \
     libcap-dev \
     bcc-dev \
-    libconfig-dev
+    libconfig-dev \
+    gnu-libiconv-dev
 COPY --from=fetcher /h2o /h2o
 RUN mkdir /h2o/output
 WORKDIR /h2o/output
@@ -47,26 +48,25 @@ RUN apk add -U --no-cache openssl perl libcap
 RUN apk add -U --no-cache \
     libzip \
     libwebp \
-    php8-pecl-memcached \
-    php8-redis \
-    php8-dom \
-    php8-ctype \
-    php8-cgi \
-    php8-gd \
-    php8-intl \
-    php8-pecl-mcrypt \
-    php8-mysqli \
-    php8-opcache \
-    php8-pdo_mysql \
-    php8-pdo_pgsql \
-    php8-posix \
-    php8-session \
-    php8-xml \
-    php8-fileinfo \
-    php8-tokenizer \
-    php8-xmlwriter \
-    composer
-RUN php8 -v
+    composer \
+    php-pecl-redis \
+    php-pdo_mysql \
+    php-pdo_pgsql \
+    php-pecl-memcached \
+    php-dom \
+    php-ctype \
+    php-cgi \
+    php-gd \
+    php-intl \
+    php-mysqli \
+    php-opcache \
+    php-posix \
+    php-xml \
+    php-fileinfo \
+    php-xmlwriter \
+    php-tokenizer
+RUN mv /etc/php81/conf.d/00_iconv.ini /home/
+RUN php -v
 RUN addgroup h2o \
     && adduser -G h2o -D h2o
 WORKDIR /home/h2o
