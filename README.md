@@ -1,4 +1,4 @@
-https://hub.docker.com/r/kody1w/h2o
+https://hub.docker.com/r/kodyph/h2o
 
 Because https://hub.docker.com/r/fukata/h2o-php/
 and https://hub.docker.com/r/lkwg82/h2o-http2-server
@@ -10,7 +10,7 @@ had not provided h2o server image.
 I updated the h2o docker image here.
 
 The system platform is Alpine-edge.
-It has php 8.0. And h2o is 2.3.0-DEV with mruby(with ruby standard 2.x) and ssl function.
+It has php 8.1. And h2o is 2.3.0-DEV with mruby(with ruby standard 2.x) and ssl function.
 
 Using compose or portainer.io is recommended:
 
@@ -19,7 +19,7 @@ version: '3.3'
 
 services:
   h2o:
-    image: kody1w/h2o:latest
+    image: kodyph/h2o:latest
     ports:
       - "80:80"
       - "443:443"
