@@ -49,10 +49,10 @@ RUN apk add -U --no-cache \
     libzip \
     libwebp \
     composer \
-    php-pecl-redis \
+    php81-pecl-redis \
     php-pdo_mysql \
     php-pdo_pgsql \
-    php-pecl-memcached \
+    php81-pecl-memcached \
     php-dom \
     php-ctype \
     php-cgi \
